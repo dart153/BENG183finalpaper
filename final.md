@@ -5,7 +5,7 @@
 2. [Filtering Algorithm](#2)<br>
     2.1. [Elements](#21)<br>
     2.2. [Procedure](#22)
-3. [Fuzzy *c*-Means](#3)
+3. [Fuzzy *c*-Means](#3)<br>
     3.1. [Elements](#31)<br>
     3.2. [Procedure](#32)
 4. [ChIA-PET](#234)
@@ -74,6 +74,11 @@ Once the basic framework for performing the clustering has been laid down, the a
 Another algorithm that is used for clustering is the fuzzy *c*-means algorithm(also referred to as soft *k*-means). Unlike in the filtering algorithm, where each data point is associated with a single center, fuzzy *c*-means allows for each data point to be associated with multiple centers. Each point is represented by a collection of weights which quantify how close a point is to the various different centers.
 </a>
 
+<p align="center">
+<img src="./weightedkmeans.gif" width="400">
+An example of a clustering using fuzzy *c*-means
+</p>
+
 ### 3.1 Elements<a name="31">
 
 There are several major elements that are crucial to performing the computations for the fuzzy *c*-means algorithm. 
@@ -89,7 +94,12 @@ When performing fuzzy *c*-means clustering on a given data set, there are two ma
 
 **E-step**: Once the centers have been selected, weights are assigned to each point from each of the cluster centers. A higher weight between a point and a center indicates that the center bears a higher responsibility in classifying the point.
 
-**M-step**: Once all the points have been assignmen
+**M-step**: Once all the points have been assigned relative weights, the centers are recomputed, assigning new "soft" centers to each point. 
+
+When performing the computations to identify the new center, any function can be used. One particular function is the following distance function (Pevzner):
+
+
+
 </a>
 
 
