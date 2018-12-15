@@ -8,7 +8,7 @@
 3. [Fuzzy *c*-Means](#3)<br>
     3.1. [Elements](#31)<br>
     3.2. [Procedure](#32)
-4. [ChIA-PET](#234)
+4. [Comparison](#4)
 5. [Selected methods comparison](#235)
 
 ---
@@ -24,7 +24,7 @@ Clustering, as a category of classification algorithms, is considered an NP-hard
 
 ## 2 Filtering Algorithm<a name="2">
 
-The filtering algorithm is a simplified version of Lloyd's algorithm, an iterative two-step procedure that converges to a local minimum when performing clustering. As with many approaches to clustering, the algorithm is often run many times to ensure that the best possible clustering of points is achieved.
+The filtering algorithm is a simplified version of Lloyd's algorithm, an iterative two-step procedure that converges to a local minimum when performing clustering. Lloyd's algorithm is one of many *k*-means clustering algorithms. As with many approaches to clustering, the algorithm is often run many times to ensure that the best possible clustering of points is achieved.
 
 </a>
 
@@ -75,8 +75,8 @@ Another algorithm that is used for clustering is the fuzzy *c*-means algorithm(a
 </a>
 
 <p align="center">
-<img src="./weightedkmeans.gif" width="400">
-An example of a clustering using fuzzy *c*-means
+<img src="./weightedkmeans.gif" width="400"></br>
+An example of a clustering using fuzzy *c*-means(<a href="https://sandipanweb.wordpress.com/2017/03/19/hard-soft-clustering-with-k-means-weighted-k-means-and-gmm-em/">source</a>).
 </p>
 
 ### 3.1 Elements<a name="31">
@@ -98,9 +98,28 @@ When performing fuzzy *c*-means clustering on a given data set, there are two ma
 
 When performing the computations to identify the new center, any function can be used. One particular function is the following distance function (Pevzner):
 
+<p align="center">
+<img src="./function1.png" width="400">
+</p>
 
+Another potential function that can be used, which often come up with better results is as follows (Pevzner):
 
+<p align="center">
+<img src="./function2.png" width="400">
+</p>
+
+The E- and M-steps are repeated, starting with the M-step, until the algorithm reaches the point of converegence, which is specified by the parameter, ![beta](https://latex.codecogs.com/gif.latex?\boldsymbol{\beta}). If the algorithm converges between two M-steps, then the centers remain stationary, and the algorithm ends.  
 </a>
+
+## Comparison<a name="4">
+
+Many aspects of the algorithms can be considered when comparing the filtering algorithm and the fuzzy *c*-means algorithms. Both arrive at clustering that would be considered good in most cases, although the two algorithms would be used in different senarios. Examining the time complexities of the two algorithms, we see that there is a significant difference in the speed of calculations between the two algorithms. Given *n* data points, *c* clusters, *d* dimensions, and *i* iterations, the complexity of *k*-means is *O(ncdi)* and the complexity of fuzzy *c*-means is *O(ndc*<sup>2</sup>*i)* (Ghosh). Fuzzy *c*-means has a greater time complexity due to the additional calculations required to compute the distances between every point and every center.
+
+<p align="center">
+<img src="">
+</p>
+
+Both approaches to clustering are valid when considering the task of classification. Fuzzy *c*-means 
 
 
 ## Works Cited
@@ -110,3 +129,5 @@ Jain, Anil K. “Data Clustering: 50 Years beyond K-Means.” *Pattern Recogniti
 Kanungo, T., et al. “An Efficient k-Means Clustering Algorithm: Analysis and Implementation.” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 24, no. 7, 7 Aug. 2002.
 
 “Bioinformatics Algorithms: an Active Learning Approach.” *Bioinformatics Algorithms: an Active Learning Approach*, by Phillip Compeau and Pavel Pevzner, Active Learning Publishers, 2015, pp. 100–103.
+
+Ghosh, Soumi, and Sanjay Kumar. “Comparative Analysis of K-Means and Fuzzy C-Means Algorithms.” International Journal of Advanced Computer Science and Applications, vol. 4, no. 4, 2013, doi:10.14569/ijacsa.2013.040406.
