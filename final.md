@@ -9,7 +9,7 @@
     3.1. [Elements](#31)<br>
     3.2. [Procedure](#32)
 4. [Comparison](#4)
-5. [Selected methods comparison](#235)
+5. [Works Cited](#5)
 
 ---
 
@@ -45,7 +45,7 @@ The third iteration using Lloyd's Algorithm(<a href="https://upload.wikimedia.or
 
 
 ### 2.1 Elements<a name="21">
- The filtering algorithm requires several elements to function as required (Kanungo et al.). These elements include:
+ The filtering algorithm requires several elements to function as required [2]. These elements include:
 
 1. **kd-tree**: A binary tree which represents the hierarchical subdivision of the points.
 2. **Box**: An axis-aligned hyper-rectangle.
@@ -58,7 +58,7 @@ The third iteration using Lloyd's Algorithm(<a href="https://upload.wikimedia.or
 Once the basic framework for performing the clustering has been laid down, the algorithm is performed as follows.
 
 1. The kd-tree is constructed from all the points.
-    * Each node of the the kd-tree maintains a list of *candidate centers*. These are a "a subset of center points that might serve as the nearest neighbor for some point lying within the associated cell" (Kanungo et al.).
+    * Each node of the the kd-tree maintains a list of *candidate centers*. These are a "a subset of center points that might serve as the nearest neighbor for some point lying within the associated cell" [2].
     * As the algorithm progresses, the candidate centers are "filtered" as the tree is traversed.  
 2. Propogate through the tree, visiting every node in the process.
     1. Each node *u* is associated with a Cell *C* and a Candidate Set *Z*.
@@ -96,13 +96,13 @@ When performing fuzzy *c*-means clustering on a given data set, there are two ma
 
 **M-step**: Once all the points have been assigned relative weights, the centers are recomputed, assigning new "soft" centers to each point. 
 
-When performing the computations to identify the new center, any function can be used. One particular function is the following distance function (Pevzner):
+When performing the computations to identify the new center, any function can be used. One particular function is the following distance function [3]:
 
 <p align="center">
 <img src="./function1.png" width="400">
 </p>
 
-Another potential function that can be used, which often come up with better results is as follows (Pevzner):
+Another potential function that can be used, which often come up with better results is as follows [3]:
 
 <p align="center">
 <img src="./function2.png" width="400">
@@ -111,23 +111,24 @@ Another potential function that can be used, which often come up with better res
 The E- and M-steps are repeated, starting with the M-step, until the algorithm reaches the point of converegence, which is specified by the parameter, ![beta](https://latex.codecogs.com/gif.latex?\boldsymbol{\beta}). If the algorithm converges between two M-steps, then the centers remain stationary, and the algorithm ends.  
 </a>
 
-## Comparison<a name="4">
+## 4 Comparison<a name="4">
 
-Many aspects of the algorithms can be considered when comparing the filtering algorithm and the fuzzy *c*-means algorithms. Both arrive at clustering that would be considered good in most cases, although the two algorithms would be used in different senarios. Examining the time complexities of the two algorithms, we see that there is a significant difference in the speed of calculations between the two algorithms. Given *n* data points, *c* clusters, *d* dimensions, and *i* iterations, the complexity of *k*-means is *O(ncdi)* and the complexity of fuzzy *c*-means is *O(ndc*<sup>2</sup>*i)* (Ghosh). Fuzzy *c*-means has a greater time complexity due to the additional calculations required to compute the distances between every point and every center.
+Many aspects of the algorithms can be considered when comparing the filtering algorithm and the fuzzy *c*-means algorithms. Both arrive at clustering that would be considered good in most cases, although the two algorithms would be used in different senarios. Examining the time complexities of the two algorithms, we see that there is a significant difference in the speed of calculations between the two algorithms. Given *n* data points, *c* clusters, *d* dimensions, and *i* iterations, the complexity of *k*-means is *O(ncdi)* and the complexity of fuzzy *c*-means is *O(ndc*<sup>2</sup>*i)* [4]. Fuzzy *c*-means has a greater time complexity due to the additional calculations required to compute the distances between every point and every center.
 
 <p align="center">
-<img src="">
+<img src="./timecomp.png" width="400"></br>
+Runtime Comparison of the Algorithms([4].
 </p>
 
-Both approaches to clustering are valid when considering the task of classification. Fuzzy *c*-means 
+Both approaches to clustering are valid when considering the task of classification. Fuzzy *c*-means is useful when the classifications may not be very distinct because it computes distances to all the classification centers. *K*-means is a good algorithm for other types of classification tasks. Ultimately, the choice of algorithm depends on the specific constraints of a specific data set and the preference of the individual performing the analysis.
 
 
-## Works Cited
+## Works Cited<a name="5">
 
-Jain, Anil K. “Data Clustering: 50 Years beyond K-Means.” *Pattern Recognition Letters*, vol. 31, no. 8, 2010, pp. 651–666., doi:10.1016/j.patrec.2009.09.011.
+[1] Jain, Anil K. “Data Clustering: 50 Years beyond K-Means.” *Pattern Recognition Letters*, vol. 31, no. 8, 2010, pp. 651–666., doi:10.1016/j.patrec.2009.09.011.
 
-Kanungo, T., et al. “An Efficient k-Means Clustering Algorithm: Analysis and Implementation.” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 24, no. 7, 7 Aug. 2002.
+[2] Kanungo, T., et al. “An Efficient k-Means Clustering Algorithm: Analysis and Implementation.” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 24, no. 7, 7 Aug. 2002.
 
-“Bioinformatics Algorithms: an Active Learning Approach.” *Bioinformatics Algorithms: an Active Learning Approach*, by Phillip Compeau and Pavel Pevzner, Active Learning Publishers, 2015, pp. 100–103.
+[3] “Bioinformatics Algorithms: an Active Learning Approach.” *Bioinformatics Algorithms: an Active Learning Approach*, by Phillip Compeau and Pavel Pevzner, Active Learning Publishers, 2015, pp. 100–103.
 
-Ghosh, Soumi, and Sanjay Kumar. “Comparative Analysis of K-Means and Fuzzy C-Means Algorithms.” International Journal of Advanced Computer Science and Applications, vol. 4, no. 4, 2013, doi:10.14569/ijacsa.2013.040406.
+[4] Ghosh, Soumi, and Sanjay Kumar. “Comparative Analysis of K-Means and Fuzzy C-Means Algorithms.” International Journal of Advanced Computer Science and Applications, vol. 4, no. 4, 2013, doi:10.14569/ijacsa.2013.040406.
